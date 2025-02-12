@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  #web:
+   # environment:
+    # CHOKIDAR_USEPOLLING: true
+  api: 
+    #build is for a path to the flder where the docker file is kept for this service 
+    build: 
+      context: . 
+      dockerfile: Dockerfile.dev.dockerfile
+    # name this container
+    container_name: frontend_c
+    #map ports
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app
+      - /app/node_modules
+   # starts container in interactive mode
+   # react container won't automatically shut down
+    stdin_open: true
+    tty: true
